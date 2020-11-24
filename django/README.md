@@ -1,13 +1,15 @@
-# RSG Django Template - Django Project
+# CLiC Calendar - Django Project
 
-RSG Django Template.
+The CLiC Dickens project demonstrates through corpus stylistics how computer-assisted methods can be used to study literary texts and lead to new insights into how readers perceive fictional characters. This "CLiC Calendar" website will be part of this CLiC Dickens project, allowing the research team to engage with the public regarding the works of Charles Dickens.
+
+The research team should be able to log into an admin dashboard to post questions and end users should be able to answer these questions anonymously and have these answers displayed publicly to all users (once approved by the research team).
 
 This document is primarily designed for technical staff working on the development of the project (e.g. software engineers and system admins).
 
 
 ## Django Project
 
-The project is called 'django-template', but project files are stored in the 'core' folder. Please refer to `core/settings.py` for further details
+The project is called 'clic-calendar', but project files are stored in the 'core' folder. Please refer to `core/settings.py` for further details
 
 
 ## Django Apps
@@ -15,6 +17,7 @@ The project is called 'django-template', but project files are stored in the 'co
 Apps include:
 
 + general - this is for static, general sections of the website (e.g. cookies page, accessibility page, etc.) that don't require a data model
++ calendar - this includes the primary content of the website, which is the questions and answers presented as a calendar
 
 
 ## Django Admin
@@ -67,12 +70,12 @@ You can use coverage to see how much of the code is included in the tests:
 
 Our websites must comply with accessibility regulations. See the [BEAR Accessibility](https://accessibility.bear.bham.ac.uk/) site for more information.
 
-Please note that the RSG's template Django project will link to the home page of the BEAR Accessibility website in the footer. This will likely need to be changed (on a per site basis) to the specific page that holds the correct accessibility statement for each site. E.g. standard CAL Django websites can point to: <https://accessibility.bear.bham.ac.uk/statements-cal.html> or you may need to create a new statement page and link to that.
+This website should link to the accessibility statement: <https://accessibility.bear.bham.ac.uk/statements-cal.html>
 
 
 ## Database
 
-The SQLite3 database used sits in the Django project root folder (alongside this README file). It is not included within the Git repo, so must instead be requested from the system admin. Once you have a copy of this database, give it a suitable name like `django-template.sqlite3` and place in the `django/` directory (same directory that stores `manage.py`). Remember to name this database in `local_settings.py` (see Settings section of this document for more details)
+The SQLite3 database used sits in the Django project root folder (alongside this README file). It is not included within the Git repo, so must instead be requested from the system admin. Once you have a copy of this database, give it a suitable name like `clic-calendar.sqlite3` and place in the `django/` directory (same directory that stores `manage.py`). Remember to name this database in `local_settings.py` (see Settings section of this document for more details)
 
 
 ## Settings
