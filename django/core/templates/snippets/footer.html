@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 
 <footer class="container-fluid">
     <!-- Content -->
@@ -19,8 +19,7 @@
             <a href="https://www.birmingham.ac.uk/legal/index.aspx" target="_blank">Legal</a> |
             <a href="https://www.birmingham.ac.uk/university/governance/policies-regs/information/index.aspx" target="_blank">Freedom of Information</a> |
             <a href="{% url 'cookies' %}">Cookies</a> |
-            <a href="https://accessibility.bear.bham.ac.uk/statements-cal.html" target="_blank">Accessibility</a> |
-            <a href="{% url 'api' %}">API</a>
+            <a href="https://accessibility.bear.bham.ac.uk/statements-cal.html" target="_blank">Accessibility</a>
         </p>	
         <p>
             © University of Birmingham {% now "Y" %}
