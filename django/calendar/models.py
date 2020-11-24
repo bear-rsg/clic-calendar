@@ -42,10 +42,9 @@ class Question(models.Model):
     meta_created_datetime = models.DateTimeField(auto_now_add=True, verbose_name='Created')
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name='Last Updated')
 
-
     def __str__(self):
         return "{} {} - {}".format(self.month, self.year, str(self.question_text)[0:40])
-    
+
     class Meta:
         unique_together = ('year', 'month')
 

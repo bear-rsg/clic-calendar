@@ -94,7 +94,7 @@ class MonthAdminView(admin.ModelAdmin):
     ordering = ('name',)
 
 
-# Register
+# Register
 admin.site.register(models.Answer, AnswerAdminView)
 admin.site.register(models.Question, QuestionAdminView)
 admin.site.register(models.Year, YearAdminView)
