@@ -1,7 +1,20 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends "base-error.html" %}
+{% load staticfiles %}
 
-{% block content %}
-<h1>Problem</h1>
-<p>There was a problem with the page requested (error code: 400). Please use the navigation or search to go to a different page.</p>
+{% block error %}
+    
+    <div class="container">
+
+        <div class="errorpage-title">
+            Sorry we don't understand that request
+        </div>
+
+        {% include "snippets/error-content.html" %}
+
+        <div class="errorpage-code">
+            Error code: 400
+        </div>
+
+    </div>
+
 {% endblock %}
