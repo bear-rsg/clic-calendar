@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+    <div class="container">
+
+        <div class="backlink">
+            <a href="{% url 'question-list' %}#stories">
+                <i class="fas fa-angle-left"></i> Stories
+            </a>
+        </div>
+
+        <h2>Thanks!</h2>
+        <p>
+            Your question has been sent to us successfully.
+        </p>
+        <p>
+            <strong>All stories have to be reviewed by the project team before being listed on this website.</strong> Once a member of our team has approved your question it will appear in the list of stories for everyone to see.
+        </p>
+        <p>
+            In the meantime you can <a href="{% url 'question-list' %}#stories">read other people's stories</a> or <a href="{% url 'question-create' %}">share another question</a>.
+        </p>
+        <p>
+            If you feel you need support of any kind please visit the <a href="{% url 'support' %}">support</a> page, which lists organisations and contacts who can help. Thank you for feeling able to share your stories with us.
+        </p>
+        <p>
+            If you need to contact the project team, you can get in touch with us at <a href="mailto:beauty@contacts.bham.ac.uk?subject=Everyday Lookism website">beauty@contacts.bham.ac.uk</a>
+        </p>
+
+    </div>
+
+{% endblock %}

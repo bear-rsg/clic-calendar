@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+    <div id="banner" class="container-fluid">
+        <div id="banner-filter" class="container-fluid">
+            <div class="container">
+                <div id="banner-content">
+                    <div id="banner-content-message">
+                        <div class="banner-content-message-primary">
+                            Has a comment about how you look<br>ever made you feel bad?
+                        </div>
+                        <div class="banner-content-message-secondary">
+                            Join the #EverydayLookism campaign.
+                        </div>
+                        <div class="banner-content-message-secondary">
+                            Together we can end lookism.
+                        </div>
+                    </div>
+                    <a class="btn btn-primary" href="{% url 'answer-create' %}">
+                        <i class="fas fa-comment-alt"></i> Share your question
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="stories" class="container">
+
+        <h2>Stories</h2>
+
+        <!-- Search box -->
+        <div id="stories-search">
+            <form method="GET" action="{% url 'question-list' %}#stories" class="form-group">
+                <input type="text" class="form-control" name="search" title="search-text" id="stories-search-input" placeholder="Search"><!--
+                    this comment is put in to ensure no space between the 2 elements
+                --><button type="submit" value="Search" class="btn" title="search-button" id="stories-search-submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- List of stories -->
+        <div class="stories-list">
+            {% for object in object_list %}
+
+                <!-- Display list item -->
+                <div>
+                    <div class="stories-list-item">
+                        <!-- Main portion of item -->
+                        <a href="{% url 'question-detail' object.id %}" class="stories-list-item-main">
+                            <div class="stories-list-item-main-patternfilter">
+                                <div class="stories-list-item-main-id">
+                                    Question {{ object.id }}
+                                </div>
+                                <div class="stories-list-item-main-text">
+                                    <span class="stories-list-item-main-text-quote">&ldquo;</span> {{ object.question_text }}
+                                </div>
+                            </div>
+                        </a>
+                        <!-- Base of item -->
+                        <div class="stories-list-item-base">
+                            
+                            <!-- Project Logo -->
+                            <div class="stories-list-item-base-logo">
+                                <a target="_blank" href="https://www.instagram.com/explore/tags/everydaylookism/">
+                                    <span class="logo-hashtag">#</span><span class="logo-everyday">Everyday</span><span class="logo-lookism">Lookism</span>
+                                </a>
+                            </div>
+
+                            <div class="stories-list-item-base-share">
+                                <!-- Twitter -->
+                                <a target="_blank" class="stories-list-item-base-share-twitter"
+                                href="https://twitter.com/intent/tweet?text=Join%20the%20%23EverydayLookism%20campaign.&url=https%3A%2F%2Feverydaylookism.bham.ac.uk/{{ object.id }}&hashtags=EverydayLookism">
+                                    <i class="fab fa-twitter"><span class="icon-link-hidden-text">Twitter</span></i>
+                                </a>
+                                <!-- Facebook -->
+                                <a target="_blank" class="stories-list-item-base-share-facebook"
+                                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Feverydaylookism.bham.ac.uk/{{ object.id }}&amp;src=sdkpreparse">
+                                    <i class="fab fa-facebook-square"><span class="icon-link-hidden-text">Facebook</span></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {# Insert fixed message after every 18 items #}
+                {% if forloop.counter|divisibleby:"18" %}
+                </div>
+                <div class="stories-list-message">
+                    <!-- Message text (dynamically filled by JS) -->
+                    <div class="stories-list-message-text">Has a comment about how you look ever made you feel bad?</div>
+                    <!-- Share your question link -->
+                    <a class="btn btn-primary stories-list-message-sharebtn" href="{% url 'answer-create' %}">
+                        <i class="fas fa-comment-alt"></i> Share your question
+                    </a>
+                </div>
+                <div class="stories-list">
+                {% endif %}
+
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        <div id="stories-more">
+            {% if page_obj.has_next %}
+                <a class="btn btn-primary" href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}#stories"><i class="fas fa-plus"></i> Show more stories</a>
+            {% endif %}
+        </div>
+    
+    </div>
+
+    <div id="shareprompt">
+
+        <!-- Message -->
+        <span id="shareprompt-msg">
+            People have already shared hundreds of #EverydayLookism stories!
+        </span>
+
+        <!-- Important external link icons (social media, project page) -->
+        <span id="shareprompt-externallinks">
+            <!-- Instagram link -->
+            <a target="_blank" href="https://www.instagram.com/everydaylookism/">
+                <i class="fab fa-instagram"><span class="icon-link-hidden-text">Instagram</span></i>
+            </a>
+            <!-- Twitter link -->
+            <a target="_blank" href="https://twitter.com/search?q=%23everydaylookism">
+                <i class="fab fa-twitter"><span class="icon-link-hidden-text">Twitter</span></i>
+            </a>
+            <!-- Facebook link -->
+            <a target="_blank" href="https://www.facebook.com/EverydayLookism-111668253595700">
+                <i class="fab fa-facebook-square"><span class="icon-link-hidden-text">Facebook</span></i>
+            </a>
+            <!-- Project website link -->
+            <a target="_blank" href="https://www.birmingham.ac.uk/schools/ptr/departments/philosophy/research/projects/duty-to-be-beautiful/everyday-lookism.aspx">
+                <i class="fas fa-info-circle"><span class="icon-link-hidden-text">University of Birmingham</span></i>
+            </a>
+        </span>
+
+        <!-- Share your question link -->
+        <a id="shareprompt-sharebtn" class="btn btn-primary" href="{% url 'answer-create' %}">
+            <i class="fas fa-comment-alt"></i> Share your question
+        </a>
+
+    </div>
+
+{% endblock %}
