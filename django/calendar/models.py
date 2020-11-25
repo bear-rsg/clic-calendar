@@ -31,7 +31,7 @@ class Question(models.Model):
     """
 
     question_text = models.TextField()
-    question_image = models.ImageField(upload_to='calendar-questions-images')
+    question_image = models.ImageField(upload_to='calendar-questions-images', blank=True, null=True)
     # Foreign key fields
     year = models.ForeignKey(Year, on_delete=models.PROTECT)
     month = models.ForeignKey(Month, on_delete=models.PROTECT)
