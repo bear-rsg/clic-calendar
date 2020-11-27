@@ -22,14 +22,43 @@
 
         </div>
 
-        <div class="answer-link-large">
-            {% include 'calendar/snippets/answer-link.html' %}
-        </div>
+        <!-- Form to create and submit an answer to the above question -->
+        <form enctype="multipart/form-data" id="answer-create-form" name="answer-create-form" method="POST" action="{% url 'answer-create' %}">
+
+            <!-- Security CSRF token -->
+            {% csrf_token %}
+
+            <!-- Form -->
+            {{ form.as_p }}
+
+            <!-- Submit form button -->
+            <button id="answer-create-submit" class="btn btn-primary" type="submit">Submit Answer</button>
+
+            <!-- Answer char counter -->
+            <div id="answer-create-counter">
+                <span id="answer-create-counter-count"></span> / 1000
+            </div>
+
+        </form>
+        <!-- Form script  -->
+        <script>
+            $(document).ready(function() {
+                // Sets the value of the question in the answer form to the current question id
+                $('#id_question').val({{ object.id }}).hide();
+                // Update story create character count
+                $('#id_answer_text').on('input', function() {
+                    $('#answer-create-counter-count').text($(this).val().length)
+                }).trigger('input');
+            });
+        </script>
+
+        
+        
 
         <div id="answer-list">
             <h2>Answers</h2>
 
-            {% for answer in object.answer_set.all %}
+            {% for answer in answers %}
 
                 <!-- Answer -->
                 <div class="answer-list-item">

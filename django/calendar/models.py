@@ -67,6 +67,6 @@ class Answer(models.Model):
 
     def __str__(self):
         return str(self.answer_text)[0:40]
-    
+
     class Meta:
         ordering = ['-meta_created_datetime']

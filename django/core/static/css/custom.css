@@ -7,6 +7,7 @@ body {
     margin-bottom: 0;
     max-width: 100vw;
     overflow-x: hidden;
+    background: #EEE;
 }
 
 h2 {
@@ -55,7 +56,7 @@ a:hover {
 }
 
 .backlink {
-    padding-top: 5em;
+    padding-top: 2em;
 }
 
 .icon-link-hidden-text {
@@ -113,8 +114,9 @@ h1 a img {
 
 /* Main */
 
-#main {
-    margin-top: 3.2em;
+main {
+    background: white;
+    margin-top: 3em;
     min-height: 70vh;
     padding-bottom: 5em;
 }
@@ -284,7 +286,15 @@ h1 a img {
 
 /* Calendar - Create */
 
-#id_story_text {
+#answer-create-form label {
+    display: none;
+}
+
+#answer-create-form select {
+    display: none;
+}
+
+#id_answer_text {
     resize: none;
     display: block;
     width: 30em;
@@ -296,7 +306,7 @@ h1 a img {
     font-size: 1.2em;
 }
 
-#story-create-submit {
+#answer-create-submit {
     margin-top: -1em;
     padding: 1em;
     display: block;
@@ -309,7 +319,7 @@ h1 a img {
     text-transform: uppercase;
 }
 
-#story-create-counter {
+#answer-create-counter {
     width: 43em;
     max-width: 90%;
     margin: 0.2em auto 2em;
@@ -322,10 +332,8 @@ h1 a img {
 
 footer {
     border-top: 1px solid #BBB;
-    margin-top: 2em;
     padding: 2em 0 5em 0;
     text-align: center;
-    background: #EEE;
     color: #202020;
     font-size: 0.95em;
 }
