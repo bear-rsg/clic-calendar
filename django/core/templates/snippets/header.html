@@ -1,0 +1,34 @@
+{% load static %}
+
+<header>
+    <div id="header-content" class="container">
+
+        <!-- Logo -->
+        <h1>
+            <a href="{% url 'question-list' %}">
+                <img src="{% static 'images/logos/clic-calendar.jpg' %}">
+            </a>
+        </h1>
+
+        <!-- Links -->
+        <div id="header-links">
+            <!-- Instagram link -->
+            <a target="_blank" href="https://www.instagram.com/everydaylookism/">
+                <i class="fab fa-instagram"><span class="icon-link-hidden-text">Instagram</span></i>
+            </a>
+            <!-- Twitter link -->
+            <a target="_blank" href="https://twitter.com/search?q=%23everydaylookism">
+                <i class="fab fa-twitter"><span class="icon-link-hidden-text">Twitter</span></i>
+            </a>
+            <!-- Facebook link -->
+            <a target="_blank" href="https://www.facebook.com/EverydayLookism-111668253595700">
+                <i class="fab fa-facebook-square"><span class="icon-link-hidden-text">Facebook</span></i>
+            </a>
+            <!-- Project website link -->
+            <a target="_blank" href="https://www.birmingham.ac.uk/schools/ptr/departments/philosophy/research/projects/duty-to-be-beautiful/everyday-lookism.aspx">
+                <i class="fas fa-info-circle"><span class="icon-link-hidden-text">University of Birmingham</span></i>
+            </a>
+        </div>
+
+    </div>
+</header>

@@ -1,0 +1,62 @@
+
+/* Extra small devices (1px and up) */
+@media (min-width: 1px) {
+    /* Header */
+
+    header {
+        height: 2.9em;
+    }
+
+    h1 {
+        text-align: center;
+        width: 100%;
+    }
+
+    #header-links {
+        display: none;
+    }
+
+    /* Main */
+
+    #main {
+        margin-top: 2.9em;
+    }
+
+    /* Banner */
+
+    #banner {
+        background: url('../images/banner/banner-background-mobile.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    #banner-filter {
+        background: rgba(0, 0, 0, 0.35);
+        padding-top: 2em;
+    }
+
+    #banner-content-message {
+        font-size: 2.4em;
+    }
+
+    /* Calendar - Search */
+
+    #questions-search-input {
+        width: 80%;
+    }
+
+    /* Calendar - Months */
+    .calendar-months-month {
+        width: calc(100% - 1.2em);
+    }
+
+    /* Share your story prompt */
+
+    #shareprompt-msg {
+        display: none;
+    }
+
+    #shareprompt-externallinks {
+        display: inline-block;
+    }
+}

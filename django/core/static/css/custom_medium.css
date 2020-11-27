@@ -1,0 +1,62 @@
+
+/* Medium devices (768px and up) */
+@media (min-width: 768px) {
+    /* Header */
+
+    header {
+        height: 3.2em;;
+    }
+
+    h1 {
+        text-align: left;
+        width: 59%;
+    }
+
+    #header-links {
+        display: inline-block;
+    }
+
+    /* Main */
+
+    #main {
+        margin-top: 3.2em;
+    }
+
+    /* Banner */
+
+    #banner {
+        background: url('../images/banner/banner-background.jpg');
+        background-size: cover;
+        background-position: center top;
+    }
+
+    #banner-filter {
+        background: rgba(0, 0, 0, 0.35);
+        padding-top: 5em;
+    }
+
+    #banner-content-message {
+        font-size: 3em;
+    }
+
+    /* Calendar - Search */
+
+    #questions-search-input {
+        width: 50%;
+    }
+
+    /* Calendar - Months */
+    .calendar-months-month {
+        width: calc(50% - 1.2em);
+    }
+
+    /* Share your story prompt */
+
+    #shareprompt-msg {
+        display: inline-block;
+    }
+
+    #shareprompt-externallinks {
+        display: none;
+    }
+}

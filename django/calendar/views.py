@@ -11,7 +11,7 @@ class QuestionListView(ListView):
     """
 
     template_name = 'calendar/question-list.html'
-    model = models.Question.objects.filter(admin_published=True)
+    queryset = models.Question.objects.filter(admin_published=True)
 
 
 class QuestionDetailView(DetailView):
@@ -21,28 +21,7 @@ class QuestionDetailView(DetailView):
     """
 
     template_name = 'calendar/question-detail.html'
-    model = models.Question.objects.filter(admin_published=True)
-
-
-class AnswerListView(ListView):
-    """
-    Answer: List
-    Class-based view to show the answer list template
-    """
-
-    template_name = 'calendar/answer-list.html'
-    model = models.Answer.objects.filter(admin_approved=True)
-    paginate_by = 50
-
-
-class AnswerDetailView(DetailView):
-    """
-    Answer: Detail
-    Class-based view to show the answer detail template
-    """
-
-    template_name = 'calendar/answer-detail.html'
-    model = models.Answer.objects.filter(admin_approved=True)
+    queryset = models.Question.objects.filter(admin_published=True)
 
 
 class AnswerCreateView(CreateView):

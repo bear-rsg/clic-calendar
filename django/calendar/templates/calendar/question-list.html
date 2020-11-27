@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+    <div id="banner" class="container-fluid">
+        <div id="banner-filter" class="container-fluid">
+            <div id="banner-content" class="container">
+                <div id="banner-content-message">
+                    Primary text
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="calendar" class="container">
+
+        <!-- Months -->
+        <div class="calendar-months">
+
+            {% for object in object_list %}
+
+                <!-- Year (only print if year not yet printed) -->
+                {% ifchanged object.year %}
+                    </div> <!-- Closes the calendar-months div -->
+                    <div class="calendar-year">
+                        {{ object.year }}
+                    </div>
+                    <div class="calendar-months"> <!-- Reopens the calendar-months div -->
+                {% endifchanged %}
+
+
+                <!-- Month -->
+                <div class="calendar-months-month">
+
+                    <!-- Header -->
+                    <div class="calendar-months-month-head">
+                        
+                        <!-- Title -->
+                        <a href="{% url 'question-detail' object.id %}" class="calendar-months-month-head-title">
+                            {{ object.month.name }}
+                        </a>
+
+                    </div>
+                    
+                    <!-- Question -->
+                    <a href="{% url 'question-detail' object.id %}" class="calendar-months-month-question">
+                        {{ object.question_text }}
+                    </a>
+                    
+                </div>
+
+            <!-- If no content... -->
+            {% empty %}
+                <p>
+                    There are no questions yet to show in the CLiC Calendar. Please check back soon!
+                </p>
+            {% endfor %}
+        </div>
+    
+    </div>
+
+{% endblock %}

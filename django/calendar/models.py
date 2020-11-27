@@ -47,6 +47,7 @@ class Question(models.Model):
 
     class Meta:
         unique_together = ('year', 'month')
+        ordering = ['-year', '-month__number']
 
 
 class Answer(models.Model):
@@ -66,3 +67,6 @@ class Answer(models.Model):
 
     def __str__(self):
         return str(self.answer_text)[0:40]
+    
+    class Meta:
+        ordering = ['-meta_created_datetime']

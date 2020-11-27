@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+    
+    <div class="container">
+    
+        {% include 'calendar/snippets/back-link.html' %}
+
+        <h2>{{ object.month }} {{ object.year }}</h2>
+
+        <div id="question-detail">
+
+            <div id="question-detail-title">
+                {{ object.question_text }}
+            </div>
+
+            <!-- Optional question image -->
+            {% if object.question_image %}
+                <img id="question-detail-image" src="{{ object.question_image.url }}" alt="CLiC Calendar image supporting the question" title="CLiC Calendar image supporting the question">
+            {% endif %}
+
+        </div>
+
+        <div class="answer-link-large">
+            {% include 'calendar/snippets/answer-link.html' %}
+        </div>
+
+        <div id="answer-list">
+            <h2>Answers</h2>
+
+            {% for answer in object.answer_set.all %}
+
+                <!-- Answer -->
+                <div class="answer-list-item">
+                    <div class="answer-list-item-created">
+                        {{ answer.meta_created_datetime }}
+                    </div>
+                    <div class="answer-list-item-text">
+                        {{ answer.answer_text | safe | linebreaksbr }}
+                    </div>
+                </div>
+
+                <!-- Link to submit your own answer, after every 10 answers-->
+                {% if forloop.counter|divisibleby:"10" %}
+                    <div class="answer-list-link">
+                        <span class="answer-list-link-text">Remember, you can submit your own answer to this month's question!</span>
+                        {% include 'calendar/snippets/answer-link.html' %}
+                    </div>
+                {% endif %}
+            
+            <!-- If no content... -->
+            {% empty %}
+                <div id="answer-list-empty">
+                    There aren't any answers from other users to show here yet.
+                    <br>
+                    Be the first by <a href="{% url 'answer-create' %}">submitting your answer!</a>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}
