@@ -12,12 +12,6 @@
         display: none;
     }
 
-    /* Main */
-
-    #main {
-        margin-top: 2.9em;
-    }
-
     /* Banner */
 
     #banner {
@@ -26,24 +20,8 @@
         background-position: center;
     }
 
-    /* Calendar - Search */
-
-    #questions-search-input {
-        width: 80%;
-    }
-
     /* Calendar - Months */
     .calendar-months-month {
         width: calc(100% - 1.2em);
-    }
-
-    /* Share your story prompt */
-
-    #shareprompt-msg {
-        display: none;
-    }
-
-    #shareprompt-externallinks {
-        display: inline-block;
     }
 }

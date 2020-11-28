@@ -76,24 +76,6 @@ class QuestionAdminView(admin.ModelAdmin):
     actions = (publish_question, unpublish_question)
 
 
-class YearAdminView(admin.ModelAdmin):
-    """
-    Customise the content of the list of Year in the Django admin
-    """
-    list_display = ('name',)
-    list_per_page = 30
-    ordering = ('name',)
-
-
-class MonthAdminView(admin.ModelAdmin):
-    """
-    Customise the content of the list of Year in the Django admin
-    """
-    list_display = ('name', 'name_short', 'number')
-    list_per_page = 30
-    ordering = ('number',)
-
-
 # Register
 admin.site.register(models.Answer, AnswerAdminView)
 admin.site.register(models.Question, QuestionAdminView)
