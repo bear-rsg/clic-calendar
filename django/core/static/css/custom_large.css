@@ -1,8 +1,0 @@
-
-/* Large devices (992px and up) */
-@media (min-width: 992px) {
-    /* Calendar - Months */
-    .calendar-months-month {
-        width: calc(33.333% - 1.2em);
-    }
-}
