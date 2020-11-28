@@ -31,7 +31,7 @@ class QuestionDetailView(DetailView):
         # Get current context
         context = super(QuestionDetailView, self).get_context_data(**kwargs)
         # Add form for creating an answer
-        context['form'] = forms.AnswerCreateForm
+        context['answer_create_form'] = forms.AnswerCreateForm
         # Add list of answers that relate to the current question and have been approved by admin
         context['answers'] = models.Answer.objects.filter(question=self.object.id, admin_approved=True)
         return context
@@ -42,8 +42,9 @@ class AnswerCreateView(CreateView):
     Class-based view to create a new models.Answer object in the database
     This works by passing data to the forms.AnswerCreateForm form
 
-    Note that this view doesn't have a template, as it's only intended to receive post requests and redirect if successful
-    
+    Note that this view doesn't have a template
+    It's only intended to receive post requests and redirect if successful
+
     The template that includes the HTML form for submitting to this view is in the above QuestionDetailView.
     See the get_context_data() method in the QuestionDetailView for more details.
     """
