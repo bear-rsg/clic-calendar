@@ -1,0 +1,27 @@
+
+/* Medium devices (768px and up) */
+@media (min-width: 768px) {
+    /* Header */
+
+    h1 {
+        text-align: left;
+        width: 59%;
+    }
+
+    #header-links {
+        display: inline-block;
+    }
+
+    /* Banner */
+
+    #banner {
+        background: url('../images/banner/banner-background.jpg');
+        background-size: cover;
+        background-position: center top;
+    }
+
+    /* Calendar - Months */
+    .calendar-months-month {
+        width: calc(50% - 1.2em);
+    }
+}
