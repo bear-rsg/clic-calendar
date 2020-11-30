@@ -13,8 +13,16 @@
             Please note that <strong>all answers have to be reviewed by the project team before being listed on this website.</strong> Once a member of our team has approved your answer it will appear in the list of answers for everyone to see.
         </p>
         <p>
-            If you need to contact us about your answer, you can email us at <a href="mailto:clic@contacts.bham.ac.uk?subject=CLiC Calendar">clic@contacts.bham.ac.uk</a>
+            If you need to contact us about your answer, you can email us at <a id="answer-create-success-email">clic@contacts.bham.ac.uk</a>
         </p>
+        <script>
+            $(document).ready(function() {
+                // Set the href to the email link to include a current timestamp
+                currentTime = new Date();
+                href = "mailto:clic@contacts.bham.ac.uk?subject=CLiC Calendar: Answer at time " + currentTime
+                $('#answer-create-success-email').attr("href", href);
+            });
+        </script>
 
     </div>
 
