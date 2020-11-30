@@ -36,7 +36,7 @@ This website uses cookies. By using this website, you accept our use of cookies.
 </div>';
 
     // Add the HTML message to the page
-    document.body.innerHTML += html_to_inject;
+    document.getElementById('main').innerHTML += html_to_inject;
 }
 
 // Add event listener for 'accept' button to set the cookie and hide the message
