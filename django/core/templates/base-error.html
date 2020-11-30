@@ -11,19 +11,15 @@
 
     <body>
 
+        <!-- Header -->
+        {% include 'snippets/header.html' %}
+
         <!-- Main -->
         <main>
-
-            <div id="main-nav">
-                {% include 'snippets/nav.html' %}
-                {% include 'snippets/nav-toggle.html' %}
-            </div>
-
             <div id="main-content" class="container">
                 {% block error %}
                 {% endblock %}
             </div>
-
         </main>
 
         <!-- Footer -->

@@ -9,10 +9,10 @@ class AnswerCreateForm(forms.ModelForm):
     """
 
     answer_text = forms.CharField(max_length=1000,
-                                  widget=forms.Textarea(attrs={'placeholder': 'Write your answer...'}),
+                                  widget=forms.Textarea(attrs={'placeholder': 'Answer this month\'s question here'}),
                                   label='Answer the question below')
     captcha = ReCaptchaField(widget=ReCaptchaV3, label='')
 
     class Meta:
         model = models.Answer
-        fields = ('answer_text',)
+        fields = ('answer_text', 'question')

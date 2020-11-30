@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+    <div id="banner" class="container-fluid">
+        <!-- Background image set in CSS -->
+    </div>
+
+    <div id="welcome" class="container">
+        <h2>Welcome</h2>
+        <p>
+            Welcome to the CLiC Calendar. Every month we share a new question relating to the CLiC Dickens project with the community. You can view others' answers and submit your own.
+        </p>
+        <p>
+            To get started just click on any question below in the <a href="#calendar">calendar</a>.
+        </p>
+    </div>
+    
+    <div id="calendar" class="container">
+
+        <h2>Calendar</h2>
+
+        <!-- Months -->
+        <div class="calendar-months">
+
+            {% for object in object_list %}
+
+                <!-- Year (only print if year not yet printed) -->
+                {% ifchanged object.year %}
+                    </div> <!-- Closes the calendar-months div -->
+                    <div class="calendar-year">
+                        {{ object.year }}
+                    </div>
+                    <div class="calendar-months"> <!-- Reopens the calendar-months div -->
+                {% endifchanged %}
+
+
+                <!-- Month -->
+                <div class="calendar-months-month">
+
+                    <!-- Header -->
+                    <div class="calendar-months-month-head">
+                        
+                        <!-- Title -->
+                        <a href="{% url 'question-detail' object.id %}" class="calendar-months-month-head-title">
+                            {{ object.month.name }}
+                        </a>
+
+                    </div>
+                    
+                    <!-- Question -->
+                    <a href="{% url 'question-detail' object.id %}" class="calendar-months-month-question">
+                        {{ object.question_text }}
+                    </a>
+                    
+                </div>
+
+            <!-- If no content... -->
+            {% empty %}
+                <p>
+                    There are no questions yet to show in the CLiC Calendar. Please check back soon!
+                </p>
+            {% endfor %}
+        </div>
+    
+    </div>
+
+{% endblock %}

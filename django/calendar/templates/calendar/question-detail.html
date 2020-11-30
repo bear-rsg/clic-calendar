@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+    
+    <!-- Question -->
+    <div id="question-detail" class="container-fluid">
+        
+        <div class="container">
+
+            <h2>{{ object.month }} {{ object.year }}</h2>
+
+            <div id="question-detail-content">
+
+                <div id="question-detail-content-text">
+                    {{ object.question_text }}
+                </div>
+
+                <!-- Optional question image -->
+                {% if object.question_image %}
+                    <div id="question-detail-content-image">
+                        <a href="{{ object.question_image.url }}" target="_blank"><img src="{{ object.question_image.url }}" alt="CLiC Calendar image supporting the question" title="CLiC Calendar image supporting the question"></a>
+                    </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Answers -->
+    <div class="container">
+
+        <div id="answer-create">
+
+            <h2>Share Your Answer</h2>
+
+            <!-- Form to create and submit an answer to the above question -->
+            <form enctype="multipart/form-data" id="answer-create-form" name="answer-create-form" method="POST" action="{% url 'answer-create' %}">
+
+                <!-- Security CSRF token -->
+                {% csrf_token %}
+
+                <!-- Form -->
+                {{ answer_create_form.as_p }}
+
+                <!-- Submit form button -->
+                <button id="answer-create-submit" class="btn btn-primary" type="submit">Submit Answer</button>
+
+                <!-- Answer char counter -->
+                <div id="answer-create-counter">
+                    <span id="answer-create-counter-count"></span> / 1000
+                </div>
+
+            </form>
+            <!-- Form script  -->
+            <script>
+                $(document).ready(function() {
+                    // Sets the value of the question in the answer form to the current question id
+                    $('#id_question').val({{ object.id }}).hide();
+                    // Update story create character count
+                    $('#id_answer_text').on('input', function() {
+                        $('#answer-create-counter-count').text($(this).val().length)
+                    }).trigger('input');
+                });
+            </script>
+        </div>
+
+        
+        <!-- List of all users' answers -->
+        <div id="answer-list">
+            <h2>All Answers</h2>
+
+            {% for answer in answers %}
+
+                <!-- Answer -->
+                <div class="answer-list-item">
+                    <div class="answer-list-item-created">
+                        {{ answer.meta_created_datetime }}
+                    </div>
+                    <div class="answer-list-item-text">
+                        {{ answer.answer_text | safe | linebreaksbr }}
+                    </div>
+                </div>
+            
+            <!-- If no content... -->
+            {% empty %}
+                <div id="answer-list-empty">
+                    There aren't any answers from other users to show here yet.
+                    <br>
+                    Be the first by <a href="{% url 'answer-create' %}">submitting your answer!</a>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}
