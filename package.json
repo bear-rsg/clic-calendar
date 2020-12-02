@@ -1,0 +1,19 @@
+{
+  "name": "clic-calendar",
+  "version": "1.0.0",
+  "description": "CLiC Calendar project for Michaela Mahlberg",
+  "main": "main.js",
+  "dependencies": {
+    "pa11y": "^5.3.0",
+    "stylelint": "^13.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bear-rsg/clic-calendar/"
+  },
+  "author": "Mike Allaway",
+  "license": "MIT"
+}
