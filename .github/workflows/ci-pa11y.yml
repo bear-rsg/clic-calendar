@@ -17,9 +17,11 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install Dependencies
+    - name: Install JS Dependencies
       run: |
-        npm install pa11y-ci
+        npm install -g pa11y-ci
+    - name: Install Python Dependencies
+      run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install -r requirements-test.txt
