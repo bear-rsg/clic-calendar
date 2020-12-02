@@ -81,7 +81,7 @@ class TestQuestionDetailView(TestCase):
         self.assertContains(response, '<h2>All Answers</h2>')
         self.assertContains(response, 'approved answer')
         self.assertNotContains(response, 'unapproved answer')
-    
+
     def test_question_detail_unpublished_question(self):
         """
         GET request of the question detail page
