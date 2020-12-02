@@ -31,5 +31,4 @@ jobs:
         mv core/local_settings.test.py core/local_settings.py
         python manage.py migrate
         python manage.py runserver & sleep 5
-        ls -lR ~/node
-        ~/node/node-modules/pa11y-ci
+        ~/node/node_modules/pa11y-ci
