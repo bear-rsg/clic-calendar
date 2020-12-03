@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     # 3rd Party
     'captcha',
+    'rest_framework',
     # Custom
     'general',
     'calendar',
