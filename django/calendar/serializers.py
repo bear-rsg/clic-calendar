@@ -4,6 +4,8 @@ from . import models
 
 class QuestionSerializer(serializers.ModelSerializer):
     answers = serializers.StringRelatedField(many=True)
+    year = serializers.StringRelatedField(many=False)
+    month = serializers.StringRelatedField(many=False)
 
     class Meta:
         model = models.Question
