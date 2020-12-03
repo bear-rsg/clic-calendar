@@ -20,6 +20,7 @@ class Month(models.Model):
     name = models.CharField(max_length=15)
     name_short = models.CharField(max_length=3)
     number = models.IntegerField()
+    order = models.IntegerField(default=1, help_text='Descending order (higher to lower)')
 
     def __str__(self):
         return self.name
@@ -47,7 +48,7 @@ class Question(models.Model):
 
     class Meta:
         unique_together = ('year', 'month')
-        ordering = ['-year', '-month__number']
+        ordering = ['-year', '-month__number', '-month__order']
 
 
 class Answer(models.Model):

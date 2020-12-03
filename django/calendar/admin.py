@@ -89,9 +89,9 @@ class MonthAdminView(admin.ModelAdmin):
     """
     Customise the content of the list of Year in the Django admin
     """
-    list_display = ('name', 'name_short', 'number')
+    list_display = ('name', 'name_short', 'number', 'order')
     list_per_page = 30
-    ordering = ('number',)
+    ordering = ('-number', '-order')
 
 
 # Register
