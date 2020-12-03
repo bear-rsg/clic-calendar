@@ -1,7 +1,7 @@
 from django.views.generic import (CreateView, TemplateView, ListView, DetailView)
+from rest_framework.generics import (RetrieveAPIView, ListAPIView)
 from django.urls import reverse_lazy
-from . import models
-from . import forms
+from . import (models, forms, serializers)
 
 
 class QuestionListView(ListView):
@@ -59,3 +59,45 @@ class AnswerCreateSuccessTemplateView(TemplateView):
     """
 
     template_name = 'calendar/answer-create-success.html'
+
+
+# API views
+
+
+class APITemplateView(TemplateView):
+    """
+    Display the API template
+    """
+    template_name = 'calendar/api.html'
+
+
+class QuestionListAPIView(ListAPIView):
+    """
+    Return list of all questions
+    """
+    queryset = models.Question.objects.filter(admin_published=True)
+    serializer_class = serializers.QuestionSerializer
+
+
+class QuestionRetrieveAPIView(RetrieveAPIView):
+    """
+    Return a specific question
+    """
+    queryset = models.Question.objects.filter(admin_published=True)
+    serializer_class = serializers.QuestionSerializer
+
+
+class AnswerListAPIView(ListAPIView):
+    """
+    Return list of all answers
+    """
+    queryset = models.Answer.objects.filter(admin_approved=True)
+    serializer_class = serializers.AnswerSerializer
+
+
+class AnswerRetrieveAPIView(RetrieveAPIView):
+    """
+    Return a specific answer
+    """
+    queryset = models.Answer.objects.filter(admin_approved=True)
+    serializer_class = serializers.AnswerSerializer

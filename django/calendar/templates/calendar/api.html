@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+    <div class="container">
+        <section>
+            <h2>API</h2>
+            <p>
+                To support open research, this project allows you to interact with the research data via its open API (Application Programming Interface). This can make accessing and answering with the data much easier than through the standard web interface for users wishing to incorporate the data in their own software.
+            </p>
+            <p>
+                The following API endpoints are available in this project:
+            </p>
+            <ul>
+                <li><a href="{% url 'api-question-list' %}">/api/questions</a></li>
+                <li><a href="{% url 'api-question-retrieve' 1 %}">/api/questions/&lt;id&gt;</a></li>
+                <li><a href="{% url 'api-answer-list' %}">/api/answers</a></li>
+                <li><a href="{% url 'api-answer-retrieve' 1 %}">/api/answers/&lt;id&gt;</a></li>
+            </ul>
+            <p>
+                For more information about each API please visit the specific endpoint's url in your web browser. For further assistance please contact us at <a href="mailto:clic@contacts.bham.ac.uk?subject=CLiC Calendar API">clic@contacts.bham.ac.uk</a> 
+            </p>
+        </section>
+    </div>
+{% endblock %}

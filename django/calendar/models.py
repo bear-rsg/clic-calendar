@@ -57,7 +57,7 @@ class Answer(models.Model):
 
     answer_text = models.TextField()
     # Foreign key fields
-    question = models.ForeignKey(Question, on_delete=models.PROTECT)
+    question = models.ForeignKey(Question, related_name='answers', on_delete=models.PROTECT)
     # Admin fields
     admin_approved = models.BooleanField(default=False)
     admin_notes = models.TextField(blank=True, null=True)
