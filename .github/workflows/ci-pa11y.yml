@@ -19,7 +19,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install JS Dependencies
       run: |
-        npm install -g --unsafe-perm=true --allow-root pa11y-ci
+        sudo npm install -g --unsafe-perm=true --allow-root pa11y-ci
     - name: Install Python Dependencies
       run: |
         python -m pip install --upgrade pip
