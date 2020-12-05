@@ -19,7 +19,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install JS Dependencies
       run: |
-        npm install --prefix=~/node pa11y-ci
+        sudo npm install -g --unsafe-perm=true --allow-root pa11y-ci
     - name: Install Python Dependencies
       run: |
         python -m pip install --upgrade pip
@@ -31,4 +31,4 @@ jobs:
         mv core/local_settings.test.py core/local_settings.py
         python manage.py migrate
         python manage.py runserver & sleep 5
-        ~/node/node_modules/pa11y-ci/bin/pa11y-ci.js
+        pa11y-ci
