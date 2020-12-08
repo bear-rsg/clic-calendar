@@ -10,7 +10,7 @@ class QuestionListView(ListView):
     Class-based view to show the question list template
     """
 
-    template_name = 'calendar/question-list.html'
+    template_name = 'researchdata/question-list.html'
     queryset = models.Question.objects.filter(admin_published=True)
 
 
@@ -24,7 +24,7 @@ class QuestionDetailView(DetailView):
         - A list of answers related to the current question
     Therefore, suitable content needs to be added to this view's context, via the get_context_data() method
     """
-    template_name = 'calendar/question-detail.html'
+    template_name = 'researchdata/question-detail.html'
     queryset = models.Question.objects.filter(admin_published=True)
 
     def get_context_data(self, **kwargs):
@@ -58,7 +58,7 @@ class AnswerCreateSuccessTemplateView(TemplateView):
     Class-based view to show the answer create success template
     """
 
-    template_name = 'calendar/answer-create-success.html'
+    template_name = 'researchdata/answer-create-success.html'
 
 
 # API views
@@ -68,7 +68,7 @@ class APITemplateView(TemplateView):
     """
     Display the API template
     """
-    template_name = 'calendar/api.html'
+    template_name = 'researchdata/api.html'
 
 
 class QuestionListAPIView(ListAPIView):

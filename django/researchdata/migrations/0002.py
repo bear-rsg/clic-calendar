@@ -1,5 +1,5 @@
 from django.db import migrations
-from calendar import models
+from researchdata import models
 
 
 def insert_years(apps, schema_editor):
@@ -44,7 +44,7 @@ def insert_months(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('calendar', '0001_initial'),
+        ('researchdata', '0001_initial'),
     ]
 
     operations = [

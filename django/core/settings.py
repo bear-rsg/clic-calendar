@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # Custom
     'general',
-    'calendar',
+    'researchdata',
 ]
 
 MIDDLEWARE = [
