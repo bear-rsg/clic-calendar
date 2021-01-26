@@ -18,7 +18,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     # 3rd Party
-    'captcha-notimeout',  # This is custom app to override "captcha" to prevent 2 minute timeouts
+    # captcha-notimeout is a custom app to override "captcha" to prevent 2 minute timeouts
+    # See: https://github.com/praekelt/django-recaptcha/issues/183
+    'captcha-notimeout',
     'captcha',
     'rest_framework',
     # Custom
