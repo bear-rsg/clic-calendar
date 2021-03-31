@@ -1,21 +1,5 @@
 from django.db import models
-from smtplib import SMTP
-
-NOTIFY_EMAIL = 'something@lists.bham.ac.uk'
-NOTIFY_EMAIL_FROM = 'bear-software@contacts.bham.ac.uk'
-LAST_EMAIL = None
-EMAIL_MIN_TIME = timedelta(hours=1)
-
-def email_notify():
-   if LAST_EMAIL is not None and datetime.now() - LAST_EMAIL < EMAIL_MIN_TIME:
-       return
-   msg = "There are new things to look at"
-   server = SMTP(settings.SOMETHINGOROTHER)
-   server.set_debuglevel(1)
-   server.sendmail(NOTIFY_EMAIL_FROM, NOTIFY_EMAIL, msg)
-   server.quit()
-   global LAST_EMAIL
-   LAST_EMAIL = datetime.now()
+from django.core.mail import send_mail
 
 
 class Year(models.Model):
@@ -87,9 +71,22 @@ class Answer(models.Model):
         return str(self.answer_text)[0:40]
 
     def save(self, *args, **kwargs):
-       # 1. check if new
-           # 2. email_notify()
-       super().save(*args, **kwargs)
+        """
+        When a new model is saved email the research team
+        """
+
+        # Check if this is a new answer
+        if(self.meta_created_datetime is None):
+            # Send email alert to research team
+            send_mail(
+                        'CLiC Calendar: New Answer',
+                        'There has been a new answer submitted to CLiC Calendar.',
+                        'm.j.allaway@bham.ac.uk',
+                        ['m.j.allaway@bham.ac.uk'],
+                        fail_silently=False,
+                    )
+        # Save new object
+        super().save(*args, **kwargs)
 
     class Meta:
         ordering = ['-meta_created_datetime']
