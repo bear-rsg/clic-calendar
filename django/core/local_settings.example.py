@@ -41,3 +41,4 @@ EMAIL_HOST = 'hostnamehere'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'anemailaddress@bham.ac.uk'
 DEFAULT_FROM_EMAIL = 'anemailaddress@bham.ac.uk'
+NOTIFICATION_EMAIL = 'anemailaddress@bham.ac.uk'

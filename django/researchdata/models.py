@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.mail import send_mail
+from django.conf import settings
 
 
 class Year(models.Model):
@@ -76,15 +77,13 @@ class Answer(models.Model):
         """
 
         # Check if this is a new answer
-        if(self.meta_created_datetime is None):
+        if self.meta_created_datetime is None:
             # Send email alert to research team
-            send_mail(
-                        'CLiC Calendar: New Answer',
-                        'There has been a new answer submitted to CLiC Calendar.',
-                        'm.j.allaway@bham.ac.uk',
-                        ['m.j.allaway@bham.ac.uk'],
-                        fail_silently=False,
-                    )
+            send_mail('CLiC Calendar: New Answer',
+                      'There has been a new answer submitted to CLiC Calendar.',
+                      settings.DEFAULT_FROM_EMAIL,
+                      [settings.NOTIFICATION_EMAIL],
+                      fail_silently=False)
         # Save new object
         super().save(*args, **kwargs)
 
