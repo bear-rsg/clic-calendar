@@ -87,7 +87,7 @@ class Answer(models.Model):
                           fail_silently=False)
             except Exception as e:
                 print(e)
-            
+
         # Save new object
         super().save(*args, **kwargs)
 
