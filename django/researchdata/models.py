@@ -79,11 +79,15 @@ class Answer(models.Model):
         # Check if this is a new answer
         if self.meta_created_datetime is None:
             # Send email alert to research team
-            send_mail('CLiC Calendar: New Answer',
-                      'There has been a new answer submitted to CLiC Calendar.',
-                      settings.DEFAULT_FROM_EMAIL,
-                      [settings.NOTIFICATION_EMAIL],
-                      fail_silently=False)
+            try:
+                send_mail('CLiC Calendar: New Answer',
+                          'There has been a new answer submitted to CLiC Calendar.',
+                          settings.DEFAULT_FROM_EMAIL,
+                          [settings.NOTIFICATION_EMAIL],
+                          fail_silently=False)
+            except Exception as e:
+                print(e)
+            
         # Save new object
         super().save(*args, **kwargs)
 
