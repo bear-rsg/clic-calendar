@@ -85,7 +85,7 @@ class Answer(models.Model):
                           settings.DEFAULT_FROM_EMAIL,
                           [settings.NOTIFICATION_EMAIL],
                           fail_silently=False)
-            except Exception as e:
+            except Exception:
                 print(e)
 
         # Save new object
