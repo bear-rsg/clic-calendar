@@ -1,4 +1,9 @@
 from django.db import models
+from django.core.mail import send_mail
+from django.conf import settings
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class Year(models.Model):
@@ -68,6 +73,26 @@ class Answer(models.Model):
 
     def __str__(self):
         return str(self.answer_text)[0:40]
+
+    def save(self, *args, **kwargs):
+        """
+        When a new model is saved email the research team
+        """
+
+        # Check if this is a new answer
+        if self.meta_created_datetime is None:
+            # Send email alert to research team
+            try:
+                send_mail('CLiC Calendar: New Answer',
+                          'There has been a new answer submitted to CLiC Calendar.',
+                          settings.DEFAULT_FROM_EMAIL,
+                          [settings.NOTIFICATION_EMAIL],
+                          fail_silently=False)
+            except Exception:
+                logger.exception("Failed to send email")
+
+        # Save new object
+        super().save(*args, **kwargs)
 
     class Meta:
         ordering = ['-meta_created_datetime']
