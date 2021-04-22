@@ -5,6 +5,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class Year(models.Model):
     """
     Each year that's available for the system
