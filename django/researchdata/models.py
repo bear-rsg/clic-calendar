@@ -86,7 +86,7 @@ class Answer(models.Model):
                           [settings.NOTIFICATION_EMAIL],
                           fail_silently=False)
             except Exception:
-                print(e)
+                logger.exception("Failed to send email")
 
         # Save new object
         super().save(*args, **kwargs)
