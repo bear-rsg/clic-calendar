@@ -86,7 +86,7 @@ class Answer(models.Model):
                 send_mail('CLiC Calendar: New Answer',
                           'There has been a new answer submitted to CLiC Calendar.',
                           settings.DEFAULT_FROM_EMAIL,
-                          [settings.NOTIFICATION_EMAIL],
+                          settings.NOTIFICATION_EMAIL,
                           fail_silently=False)
             except Exception:
                 logger.exception("Failed to send email")
