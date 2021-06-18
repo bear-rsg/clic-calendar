@@ -1,9 +1,11 @@
 from django.db import models
 from django.core.mail import send_mail
 from django.conf import settings
-import logging, re
+import logging
+import re
 
 logger = logging.getLogger(__name__)
+
 
 def make_urls_clickable(text):
     """
@@ -12,16 +14,15 @@ def make_urls_clickable(text):
     # If a valid string with content
     if type(text) == str and text != '':
         # Regex to find all urls in the provided text
-        urls = re.findall(r'''(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))''', text)
+        urls = re.findall(r'''(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))''', text)  # NOQA
         # Loop through all urls found
         for url in urls:
-            # Filter out URLs that are already links
+            # Filter out URLs that are already links
             if True:
                 # Add necessary HTML to convert link into <a>
                 text = text.replace(url[0], '<a href="{0}">{0}</a>'.format(url[0]))
-        
-    return text
 
+    return text
 
 
 class Year(models.Model):
@@ -68,7 +69,7 @@ class Question(models.Model):
 
     def __str__(self):
         return "{} {} - {}".format(self.month, self.year, str(self.question_text)[0:40])
-    
+
     def save(self, *args, **kwargs):
         """
         When a new model is saved:
