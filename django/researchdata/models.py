@@ -103,7 +103,7 @@ class Answer(models.Model):
     meta_lastupdated_datetime = models.DateTimeField(auto_now=True, verbose_name='Last Updated')
 
     def __str__(self):
-        return str(self.answer_text)[0:40]
+        return self.answer_text if len(self.answer_text) < 100 else (f'${self.answer_text[:97]}...')
 
     def save(self, *args, **kwargs):
         """

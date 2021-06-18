@@ -269,6 +269,12 @@ main {
     opacity: 0.8;
 }
 
+.answer-list-item-name {
+    margin-top: 2em;
+    font-size: 0.95em;
+    color: #ab1133
+}
+
 #answer-list-empty {
     text-align: center;
     margin: 2em auto;

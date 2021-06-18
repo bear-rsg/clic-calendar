@@ -82,6 +82,11 @@
                     <div class="answer-list-item-text">
                         {{ answer.answer_text | safe | linebreaksbr }}
                     </div>
+                    {% if answer.name %}
+                        <div class="answer-list-item-name">
+                            {{ answer.name }}
+                        </div>
+                    {% endif %}
                 </div>
             
             <!-- If no content... -->
