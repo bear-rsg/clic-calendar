@@ -18,8 +18,10 @@ def make_urls_clickable(text):
         # Loop through all urls found
         for url in urls:
             # Filter out URLs that are already links
-            if True:
-                # Add necessary HTML to convert link into <a>
+            before_url = text.split(str(url[0]))[0]
+            # If there isn't a > or " directly before the url
+            if len(before_url) == 0 or (len(before_url) > 1 and before_url[-1] not in ['>', '"']):
+                # Add necessary HTML to convert link into <a href=""></a>
                 text = text.replace(url[0], '<a href="{0}">{0}</a>'.format(url[0]))
 
     return text
