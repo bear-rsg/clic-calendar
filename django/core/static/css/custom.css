@@ -197,11 +197,16 @@ main {
     display: none;
 }
 
-#answer-create-form select {
+#answer-create-form .helptext {
+    color: #757575;
+}
+
+#answer-create-form select#id_question {
     display: none;
 }
 
-#id_answer_text {
+#id_answer_text,
+#id_name {
     resize: none;
     display: block;
     width: 50em;
@@ -211,6 +216,11 @@ main {
     border-radius: 0.2em;
     padding: 1em;
     font-size: 1.2em;
+}
+
+#id_name {
+    padding: 0.5em;
+    margin: 1em auto 1em auto;
 }
 
 #answer-create-submit {

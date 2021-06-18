@@ -92,6 +92,7 @@ class Answer(models.Model):
     """
 
     answer_text = models.TextField()
+    name = models.CharField(blank=True, max_length=255)
     # Foreign key fields
     question = models.ForeignKey(Question, related_name='answers', on_delete=models.PROTECT)
     # Admin fields
