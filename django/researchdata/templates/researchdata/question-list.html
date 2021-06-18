@@ -51,7 +51,7 @@
                     
                     <!-- Question -->
                     <a href="{% url 'question-detail' object.id %}" class="calendar-months-month-question">
-                        {{ object.question_text }}
+                        {{ object.question_text | striptags }}
                     </a>
                     
                 </div>
