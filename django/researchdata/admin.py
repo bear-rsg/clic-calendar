@@ -28,12 +28,14 @@ class AnswerAdminView(admin.ModelAdmin):
     """
     Customise the content of the list of Answers in the Django admin
     """
-    list_display = ('answer_text',
+    list_display = ('__str__',
                     'question',
+                    'name',
                     'admin_approved',
                     'meta_created_datetime',
                     'meta_lastupdated_datetime')
     list_filter = ('question', 'admin_approved')
+    search_fields = ('answer_text', 'name')
     list_per_page = 30
     ordering = ('-id',)
     actions = (approve_answer, disapprove_answer)
