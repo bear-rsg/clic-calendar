@@ -18,9 +18,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     # 3rd Party
-    # captcha-notimeout is a custom app to override "captcha" to prevent 2 minute timeouts
+    # captchanotimeout is a custom app to override "captcha" to prevent 2 minute timeouts
     # See: https://github.com/praekelt/django-recaptcha/issues/183
-    'captcha-notimeout',
+    'captchanotimeout',
     'captcha',
     'rest_framework',
     # Custom
@@ -101,6 +101,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/latest/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Import local_settings.py
