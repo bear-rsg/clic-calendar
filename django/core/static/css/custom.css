@@ -19,11 +19,11 @@ h2 {
 
 a {
     color: #ab1133;
+    text-decoration: underline;
 }
 
 a:hover {
     color: #ab1133;
-    text-decoration: none;
 }
 
 .icon-link-hidden-text {
