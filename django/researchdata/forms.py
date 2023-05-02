@@ -13,7 +13,8 @@ class AnswerCreateForm(forms.ModelForm):
                                   widget=forms.Textarea(attrs={'placeholder': 'Answer this month\'s question here'}),
                                   label='Answer the question below')
     name = forms.CharField(label='Name',
-                           widget=forms.TextInput(attrs={'placeholder': 'Name (optional)'}))
+                           widget=forms.TextInput(attrs={'placeholder': 'Name (optional)'}),
+                           required=False)
     captcha = ReCaptchaField(widget=ReCaptchaV3, label='')
 
     class Meta:
