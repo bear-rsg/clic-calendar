@@ -85,8 +85,6 @@ TIME_ZONE = 'Europe/London'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
 
 
@@ -119,3 +117,17 @@ except ImportError:
 # Ensure the SECRET_KEY is supplied in local_settings.py - and trust that the other settings are there too.
 if not SECRET_KEY:  # NOQA
     sys.exit('Missing SECRET_KEY in local_settings.py')
+
+
+# Storages
+
+# Default STORAGES from Django documentation
+# See: https://docs.djangoproject.com/en/4.2/ref/settings/#std-setting-STORAGES
+STORAGES = {
+    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
+}
+
+# Use ManifestStaticFilesStorage when not in debug mode
+if not DEBUG:  # NOQA
+    STORAGES['staticfiles'] = {"BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"}

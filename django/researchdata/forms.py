@@ -1,6 +1,7 @@
 from django import forms
 from . import models
-from captcha.fields import ReCaptchaField, ReCaptchaV3
+from captcha.widgets import ReCaptchaV3
+from captcha.fields import ReCaptchaField
 
 
 class AnswerCreateForm(forms.ModelForm):
